@@ -23,7 +23,7 @@ make -C minSizeRel clean all
 Load using:
 
 ````
-./flash-stm32u5a5
+./flash
 ````
 
 Expected result:
