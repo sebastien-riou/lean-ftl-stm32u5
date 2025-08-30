@@ -11,5 +11,7 @@ cd $DISTDIR
 wget https://github.com/sebastien-riou/lean-ftl/releases/download/${VERSION}/lean-ftl-${VERSION}.tar.gz
 tar -xf lean-ftl-${VERSION}.tar.gz
 mv dist/liblean-ftl-test . 
+tar -xf dist/liblean-ftl-debug.tar.gz
+mv liblean-ftl debug
 tar -xf dist/liblean-ftl-minSizeRel.tar.gz
 mv liblean-ftl minSizeRel
