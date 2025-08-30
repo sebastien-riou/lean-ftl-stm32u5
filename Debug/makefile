@@ -62,7 +62,7 @@ main-build: lean-ftl-u5a5.elf secondary-outputs
 
 # Tool invocations
 lean-ftl-u5a5.elf lean-ftl-u5a5.map: $(OBJS) $(USER_OBJS) /home/sru/repos/lean-ftl-stm32u5/STM32U5A5ZJTXQ_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "lean-ftl-u5a5.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m33 -T"/home/sru/repos/lean-ftl-stm32u5/STM32U5A5ZJTXQ_FLASH.ld" --specs=nosys.specs -Wl,-Map="lean-ftl-u5a5.map" -Wl,--gc-sections -static -L/home/sru/repos/lean-ftl/build/stm32u5/liblean-ftl-test -L/home/sru/repos/lean-ftl/build/stm32u5/liblean-ftl --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+	arm-none-eabi-gcc -o "lean-ftl-u5a5.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m33 -T"/home/sru/repos/lean-ftl-stm32u5/STM32U5A5ZJTXQ_FLASH.ld" --specs=nosys.specs -Wl,-Map="lean-ftl-u5a5.map" -Wl,--gc-sections -static -L../lean-ftl-dist/minSizeRel/build/stm32u5/liblean-ftl-test -L../lean-ftl-dist/minSizeRel/build/stm32u5/liblean-ftl --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
