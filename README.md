@@ -17,7 +17,7 @@ This projected as been tested with https://github.com/xpack-dev-tools/arm-none-e
 Build using make:
 
 ````
-make -C Debug clean all
+make -C minSizeRel clean all
 ````
 
 Load using:

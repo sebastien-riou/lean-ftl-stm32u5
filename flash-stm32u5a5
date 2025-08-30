@@ -3,7 +3,7 @@
 set -ex
 
 index=${1:-0}
-name=${2:-Debug/lean-ftl-u5a5.elf}
+name=${2:-minSizeRel/lean-ftl-u5a5.elf}
 addr=${3:-0x08000000}
 #power cycle to make any latent change to option bytes visible
 STM32_Programmer_CLI --connect port=swd index=${index} -halt --power off index=${index} --power on index=${index}
