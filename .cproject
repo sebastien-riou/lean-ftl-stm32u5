@@ -46,7 +46,7 @@
 								</option>
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.includepaths.1306498222" name="Include paths (-I)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.includepaths" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="../Core/Inc"/>
-									<listOptionValue builtIn="false" value="../lean-ftl-dist/minSizeRel/include"/>
+									<listOptionValue builtIn="false" value="../lean-ftl-dist/debug/include"/>
 									<listOptionValue builtIn="false" value="../lean-ftl-dist/liblean-ftl-test/include"/>
 									<listOptionValue builtIn="false" value="../Drivers/STM32U5xx_HAL_Driver/Inc"/>
 									<listOptionValue builtIn="false" value="../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy"/>
@@ -68,8 +68,8 @@
 									<listOptionValue builtIn="false" value="lean-ftl"/>
 								</option>
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.option.directories.630820817" name="Library search path (-L)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.option.directories" valueType="libPaths">
-									<listOptionValue builtIn="false" value="../lean-ftl-dist/minSizeRel/build/stm32u5/liblean-ftl-test"/>
-									<listOptionValue builtIn="false" value="../lean-ftl-dist/minSizeRel/build/stm32u5/liblean-ftl"/>
+									<listOptionValue builtIn="false" value="../lean-ftl-dist/debug/build/stm32u5/liblean-ftl-test"/>
+									<listOptionValue builtIn="false" value="../lean-ftl-dist/debug/build/stm32u5/liblean-ftl"/>
 								</option>
 								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.input.53420992" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
