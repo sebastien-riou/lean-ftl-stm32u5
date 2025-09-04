@@ -78,85 +78,6 @@ void delay_ms(unsigned int ms){
 
 #include "lean-ftl-test.h"
 
-
-#include <string.h>
-#define FLASH_WRITE_SIZE 16
-#define NVM_BANK_ADDR_MASK (~(FLASH_BANK_SIZE-1))
-#define NVM_BANK_BASE(addr) ((void*)((uintptr_t)(addr) & NVM_BANK_ADDR_MASK))
-/*
-static bool bank_swapped(){
-  const uint32_t swap_bank = READ_BIT(FLASH->OPTR,FLASH_OPTR_SWAP_BANK);
-  return swap_bank ? 1 : 0;
-}
-
-uint8_t __attribute__ ((section (".flash_write_funcs"))) nvm_erase(void*base_address, unsigned int n_pages){
-  if(0 == n_pages) return 0;
-  const uintptr_t size = n_pages * FLASH_PAGE_SIZE;
-  if((uintptr_t)base_address < FLASH_BASE_NS) return 1;
-  if(((uintptr_t)base_address + size) > (FLASH_BASE_NS + FLASH_SIZE)) return 2;
-  if(0 != ((uintptr_t)base_address % FLASH_PAGE_SIZE)) return 3;
-
-  const uintptr_t bank_addr = (uintptr_t)NVM_BANK_BASE(base_address);
-  const uint32_t bank = (bank_addr - FLASH_BASE_NS)/FLASH_BANK_SIZE;
-  const uint32_t page = ((uintptr_t)base_address - bank_addr)/FLASH_PAGE_SIZE;
-
-  if(HAL_OK != HAL_FLASH_Unlock()) return 4;
-  HAL_StatusTypeDef status;
-  uint32_t PageError;
-  FLASH_EraseInitTypeDef pEraseInit;
-  if(bank ^ bank_swapped()){
-	  pEraseInit.Banks = FLASH_BANK_2;
-  }else{
-	  pEraseInit.Banks = FLASH_BANK_1;
-  }
-  pEraseInit.NbPages = n_pages;
-  pEraseInit.Page = page;
-  pEraseInit.TypeErase = FLASH_TYPEERASE_PAGES;
-  const bool icache_enabled = HAL_ICACHE_IsEnabled();
-  if (icache_enabled){//need to disable icache, it treats write in cache-able areas as errors.
-	  if(HAL_ICACHE_Disable() != HAL_OK) return 5;
-  }
-  status = HAL_FLASHEx_Erase(&pEraseInit, &PageError);
-  if (icache_enabled){
-	  if (HAL_ICACHE_Enable() != HAL_OK) return 6;
-  }
-  if(HAL_OK != HAL_FLASH_Lock()) return 7;
-  if(0xFFFFFFFF != PageError) return 8;
-  if(HAL_OK != status) return 9;
-  return 0;
-}
-
-uint8_t __attribute__ ((section (".flash_write_funcs"))) nvm_write(void*dst_nvm_addr, const void*const src, uintptr_t size){
-  if(0 == size) return 0;
-  if((uintptr_t)dst_nvm_addr < FLASH_BASE_NS) return 1;
-  if(((uintptr_t)dst_nvm_addr + size) > (FLASH_BASE_NS + FLASH_SIZE)) return 2;
-  if(0 != ((uintptr_t)dst_nvm_addr % FLASH_WRITE_SIZE)) return 3;
-  if(0 != (size % FLASH_WRITE_SIZE)) return 4;
-
-  if(HAL_OK != HAL_FLASH_Unlock()) return 5;
-  uint32_t dsti = (uint32_t)dst_nvm_addr;
-  uint32_t srci = (uint32_t)src;
-  const bool icache_enabled = HAL_ICACHE_IsEnabled();
-  if (icache_enabled){
-    if(HAL_ICACHE_Disable() != HAL_OK) return 6;
-  }
-  for(uint32_t i=0;i<size / FLASH_WRITE_SIZE;i++){
-	  HAL_StatusTypeDef status;
-	  status = HAL_FLASH_Program(FLASH_TYPEPROGRAM_QUADWORD, dsti, srci);
-	  if(HAL_OK != status) return 5;
-	  dsti += FLASH_WRITE_SIZE;
-	  srci += FLASH_WRITE_SIZE;
-  }
-  if (icache_enabled){
-	if (HAL_ICACHE_Enable() != HAL_OK) return 7;
-  }
-  if(HAL_OK != HAL_FLASH_Lock()) return 8;
-  uint8_t fail = 0;
-  fail = memcmp(dst_nvm_addr,src,size) ? 9 : 0;
-
-  return fail;
-}*/
-
 /* USER CODE END 0 */
 
 /**
@@ -218,13 +139,15 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  test_callbacks();
+  test_main();
+
   while (1)
   {
 
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-    test_main();
   }
   /* USER CODE END 3 */
 }
