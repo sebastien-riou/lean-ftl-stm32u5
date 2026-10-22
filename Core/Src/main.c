@@ -140,7 +140,7 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   test_callbacks();
-  test_main();
+  test_main(0,NULL,NULL);
 
   while (1)
   {
